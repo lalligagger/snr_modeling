@@ -7,9 +7,12 @@ from pyspectral.solar import SolarIrradianceSpectrum, TOTAL_IRRADIANCE_SPECTRUM_
 from scipy import interpolate
 from spectral import EcostressDatabase
 
+
+wl_min = 0.41
+wl_max = 14.0
 d_lambda = 0.005
 
-wavelengths = np.arange(0.41, 14.0, d_lambda)
+wavelengths = np.arange(wl_min, wl_max, d_lambda)
 bb_temp = 300
 
 # get relative data folder
