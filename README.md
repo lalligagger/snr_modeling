@@ -57,8 +57,7 @@ Containes ECOSTRESS spectra interface, basic set of hyperspectral imaging algori
 
 ## Goals of the Dash application
 
-There are LOTS of knobs to turn with an instrument SNR model like this. The `configuration.ini` file is being developed to hold anything the user might change, and broken up in to the different HYTRAN classes that each set of inputs applies to.
-
-Hopefully, this will be a good roadmap for the inputs of a Dash application, which is ultimately meant to simplify the operation of the model and provide access to other users.
+There are LOTS of knobs to turn with an instrument SNR model like this.  
+The `configuration.ini` file is being developed to hold anything the user might change, and broken up in to the different HYTRAN classes that each set of inputs applies to. Hopefully, this will be a good roadmap for the inputs of a Dash application, which is ultimately meant to simplify the operation of the model and provide access to other users.
 
 Kevin needs to stay focused on the modeling itself as this is a new effort for Hydrosat, but also knows more or less what he wants for front-end interface. Given the complexity of the full model, idea is to break into chunks (starting with Phase 1)
