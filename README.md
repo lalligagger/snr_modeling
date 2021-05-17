@@ -44,6 +44,10 @@ Dash app specific functions:
 All of the data for this phase can be conveniently held on the same x-axis of wavelength (we'll use microns). The bands for e.g. Landsat (except TIRS) & Sentinel-3 are already available through Pyspectral. ECOSTRESS/ ASTER reference spectra are available through SPy. See `spy_basics.ipynb` for simple interface setup, or `NEDT_calcs.ipynb` for a more complete treatment with HYTRAN.  
 The script `spy_scene.py` is a much simpler reworking of the above studies, to enable quick development of a Dash application along the same lines. It outputs six total curves based on user-selected temperature, wavelength domain, and a reference reflecatance spectra. (Uses the standard TOA for solar and currently no atmosphere.)
 
+Below is a plot of what `spy_scene.py` currently produces. Everything is all mashed up in one dataframe/ plot which needs some cleaning up!
+
+![image](assets/spy_scene_plot.png)
+
 ## Dependencies
 ### HYTRAN
 In-house python module for scene and instrument configuration to run performance modeling. Will support the inclusion of various spectral and atmospheric data once interfaces are defined.
@@ -64,3 +68,4 @@ There are LOTS of knobs to turn with an instrument SNR model like this.
 The `configuration.ini` file is being developed to hold anything the user might change, and broken up in to the different HYTRAN classes that each set of inputs applies to. Hopefully, this will be a good roadmap for the inputs of a Dash application, which is ultimately meant to simplify the operation of the model and provide access to other users.
 
 Kevin needs to stay focused on the modeling itself as this is a new effort for Hydrosat, but also knows more or less what he wants for front-end interface. Given the complexity of the full model, idea is to break into chunks (starting with Phase 1)
+
