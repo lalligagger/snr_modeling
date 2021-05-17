@@ -8,8 +8,12 @@ from scipy import interpolate
 from spectral import EcostressDatabase
 
 
-wl_min = 0.41
+# wl_min = 0.41
+# wl_max = 14.0
+
+wl_min = 9.5
 wl_max = 14.0
+
 d_lambda = 0.005
 
 wavelengths = np.arange(wl_min, wl_max, d_lambda)
@@ -18,6 +22,8 @@ bb_temp = 300
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("./datasets").resolve()
+
+atm_trans = pd.read_csv('./datasets/modtran_lwir.csv')
 
 db = EcostressDatabase(DATA_PATH.joinpath("ecostress.db"))
 s = db.get_signature(134)
@@ -51,21 +57,24 @@ solar_line = px.line(
 
 spectral_function = interpolate.interp1d(solar_irr.wavelength, solar_irr.irradiance)
 refl_function = interpolate.interp1d(s.x, s.y)
+atm_function = interpolate.interp1d(atm_trans.x, atm_trans.y)
 refl_resamp = refl_function(wavelengths)
-solar_respam = spectral_function(wavelengths)
+solar_resamp = spectral_function(wavelengths)
+atm_resamp = atm_function(wavelengths)
 
 df = (
     pd.DataFrame(
-        data=[solar_respam, refl_resamp, bb_rads, wavelengths],
-        index=["solar_rad", "scene_refl", "bb_rad", "wave_um"],
+        data=[solar_resamp, refl_resamp, bb_rads, atm_resamp*100, wavelengths],
+        index=["solar_rad", "scene_refl", "bb_rad", "atm_trans", "wave_um"],
     )
     .transpose()
     .set_index("wave_um")
 )  # , index=[wavelengths])
 
-df["solar_reflected"] = df["solar_rad"] * (df["scene_refl"] / 100)
+df["solar_reflected"] = df["solar_rad"] * (df["scene_refl"] / 100) * (df["atm_trans"] / 100)
 df["emissivity"] = df["scene_refl"] * (-1) + 100
 df["emitted_thermal"] = df["bb_rad"] * (df["emissivity"] / 100)
+df["at_lens"] = (df["emitted_thermal"] + df["solar_reflected"])*df["atm_trans"]/100
 
 print(df.head())
 
