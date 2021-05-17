@@ -8,16 +8,20 @@ from scipy import interpolate
 from spectral import EcostressDatabase
 
 
-# wl_min = 0.41
-# wl_max = 14.0
+# All of the below params will be stored in config.ini for saved runs.
 
 wl_min = 9.5
 wl_max = 14.0
-
 d_lambda = 0.005
-
 wavelengths = np.arange(wl_min, wl_max, d_lambda)
+
 bb_temp = 300
+
+band1_cuton = 10.6
+band1_cutoff = 11.19
+band2_cuton = 11.5
+band2_cutoff = 12.51
+
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
@@ -85,4 +89,14 @@ fig = px.line(df, log_y=True, range_y=[1e-6,1e5]).update_layout(
     xaxis_title="Wavelength [microns]",
     yaxis_title="Radiance [W/m^2/um/sr] ; Reflectance/ Emissivity [%]",
 )
+
+fig.add_vrect(x0=band1_cuton, x1=band1_cutoff, col=1,
+              annotation_text="TIR1", annotation_position="top left",
+              fillcolor="green", opacity=0.25, line_width=0)
+
+fig.add_vrect(x0=band2_cuton, x1=band2_cutoff, col=1,
+              annotation_text="TIR2", annotation_position="top left",
+              fillcolor="blue", opacity=0.25, line_width=0)
+
+
 fig.show()

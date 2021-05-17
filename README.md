@@ -50,10 +50,13 @@ In-house python module for scene and instrument configuration to run performance
 
 ### Pyspectral
 A helpful if basic package that has similar goals for scene modeling as HYTRAN, plus some spectral response curves of various Earth observing instruments.
+* https://pyspectral.readthedocs.io/en/master/rsr_plotting.html
+* https://pyspectral.readthedocs.io/en/master/rad_definitions.html
+
 
 ### Spectral Python (SPy)
-
 Containes ECOSTRESS spectra interface, basic set of hyperspectral imaging algorithms.
+* https://www.spectralpython.net/libraries.html#ecostress-spectral-library
 
 ## Goals of the Dash application
 
