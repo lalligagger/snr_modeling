@@ -53,14 +53,19 @@ Below is a plot of what `spy_scene.py` currently produces. Everything is all mas
 In-house python module for scene and instrument configuration to run performance modeling. Will support the inclusion of various spectral and atmospheric data once interfaces are defined.
 
 ### Pyspectral
-A helpful if basic package that has similar goals for scene modeling as HYTRAN, plus some spectral response curves of various Earth observing instruments.
-* https://pyspectral.readthedocs.io/en/master/rsr_plotting.html
-* https://pyspectral.readthedocs.io/en/master/rad_definitions.html
+A helpful if basic package that has similar goals for scene modeling as HYTRAN, plus some spectral response curves of various Earth observing instruments. Currently used features:
+* [Spectral Response Functions](https://pyspectral.readthedocs.io/en/master/rsr_plotting.html)  
+See `spy_basics.ipynb` for a test case with Sentinel-3 bands.  
+<img src="assets/Sentinel_bands.png" alt="Sentinel Bands" style="width:200px;"/>
+* [Solar TOA Reference Spectrum & Blackbody Generation](https://pyspectral.readthedocs.io/en/master/rad_definitions.html)  
+See the above spaghetti plot for an idea of how this all comes together.
 
 
 ### Spectral Python (SPy)
 Containes ECOSTRESS spectra interface, basic set of hyperspectral imaging algorithms.
-* https://www.spectralpython.net/libraries.html#ecostress-spectral-library
+* https://www.spectralpython.net/libraries.html#ecostress-spectral-library  
+See `spy_basics.ipynb` for a test case of a spectrum lookup. **Need a good user interface for Dash app.**  
+<img src="assets/example_spectrum.png" alt="Sentinel Bands" style="width:200px;"/>
 
 ## Goals of the Dash application
 
