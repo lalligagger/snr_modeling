@@ -42,7 +42,7 @@ class Instrument:
                 0.7 * self.transmission
             )  # / ureg.steradian
 
-    def add_detector(self, name="Pico1024", pp_um=17, t_int_us=12, detectivity=8e8):
+    def add_detector(self, name="ubol", pp_um=17, t_int_us=12, detectivity=8e8):
         """Adds detector to instrument model (in work)."""
         self.pp_um = pp_um * ureg.micrometer
         self.A_det = (self.pp_um) ** 2
