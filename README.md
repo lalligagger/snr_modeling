@@ -29,7 +29,7 @@ Generate SNR/ NEDT over range of detector parameters​.
 Blackbody radiance calculations complete with dimensional analysis (using Pint) are being developed in the HYTRAN module.  
 In the meantime, an end-to-end SNR modeling prototype will be developed using a combination of validated pyspectral radiance functions and HYTRAN instrument models. (More on the complete planned HYTRAN capability later.)  
 
-The below image is a great high-level example of what we're after. This is a visual comparison of the Landsat 7 vs. the Sentinel-2 bands vs. wavelength, superposed on a standard atmospheric transmission spectrum.
+The below image is a great high-level example of what we're after. This is a visual comparison of the Landsat 7 & 8 vs. the Sentinel-2 bands vs. wavelength, superposed on a standard atmospheric transmission spectrum.
 
 ![image](assets/S2LS7Comparison.png)
 
